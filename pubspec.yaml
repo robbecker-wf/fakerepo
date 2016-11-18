@@ -1,0 +1,5 @@
+name: 'fakerepo'
+version: 1.0.0
+description: A fake repo to test pub issues
+
+dependencies:
