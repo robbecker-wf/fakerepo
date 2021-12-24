@@ -4,21 +4,22 @@ name: Auto-Release on PR Merge
 
 on:
   pull_request:
-    types: [closed]
+    # types: [closed]
 
 jobs:
   release:
-    if: github.event.pull_request.merged == 'true'
+    # if: github.event.pull_request.merged == 'true'
     runs-on: ubuntu-latest
-    
 
     steps:
       - name: Checkout
         uses: actions/checkout@v1
       - name: Stuff
         run: |
-          export PATH="$PATH":"$HOME/.pub-cache/bin"
-          export GITHUB_TOKEN=${{secrets.GITHUB_TOKEN}}
-          pub get
-          pub global activate cider
-          dart run fakerepo:release ${github.event.pull_request.id}
+          echo ${{github.event.pull_request.merged}}
+          echo ${{github.event.pull_request.id}}
+          # export PATH="$PATH":"$HOME/.pub-cache/bin"
+          # export GITHUB_TOKEN=${{secrets.GITHUB_TOKEN}}
+          # pub get
+          # pub global activate cider
+          # dart run fakerepo:release ${github.event.pull_request.id}
