@@ -1,0 +1,24 @@
+# Will create a new Dart release on PR merge
+# IF the PR has a semver label and release_on_merge label
+name: Auto-Release on PR Merge
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  release:
+    if: github.event.pull_request.merged == 'true'
+    runs-on: ubuntu-latest
+    
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Stuff
+        run: |
+          export PATH="$PATH":"$HOME/.pub-cache/bin"
+          export GITHUB_TOKEN=${{secrets.GITHUB_TOKEN}}
+          pub get
+          pub global activate cider
+          dart run fakerepo:release ${github.event.pull_request.id}

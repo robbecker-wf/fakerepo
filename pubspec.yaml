@@ -1,5 +1,17 @@
 name: 'fakerepo'
-version: 2.0.0
-description: A fake repo to test pub issues
+version: 2.0.1
+description: A fake repo for testing
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+executables:
+  release:
 
 dependencies:
+  github:
+  yaml:
+
+dependency_overrides:
+  github:
+    path: ../github.dart
