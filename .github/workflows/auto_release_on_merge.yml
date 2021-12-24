@@ -14,10 +14,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-      - name: Stuff
+      - name: Release
         run: |
           echo ${{github.event.pull_request.merged}}
-          echo ${{github.event.pull_request.id}}
+          echo ${{github.event.pull_request.number}}
           # export PATH="$PATH":"$HOME/.pub-cache/bin"
           # export GITHUB_TOKEN=${{secrets.GITHUB_TOKEN}}
           # pub get
